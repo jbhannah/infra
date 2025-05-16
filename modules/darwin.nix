@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ inputs, ... }: {
   nix.enable = false;
 
   environment.extraInit = ''
@@ -40,4 +40,9 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
+
+  users.users.brooklyn = {
+    name = "brooklyn";
+    home = "/Users/brooklyn";
+  };
 }
