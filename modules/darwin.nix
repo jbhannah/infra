@@ -1,5 +1,6 @@
 { inputs, ... }: {
   nix.enable = false;
+  nixpkgs.config.allowUnfree = true;
 
   environment.extraInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -9,18 +10,20 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = [];
 
-  homebrew.enable = true;
-  homebrew.caskArgs.appdir = "~/Applications";
-  homebrew.casks = [
-    {
-      name = "1password";
-      args.appdir = "/Applications";
-    }
-    "1password-cli"
-    "arc"
-    "visual-studio-code"
-    "warp"
-  ];
+  homebrew = {
+    enable = true;
+    caskArgs.appdir = "~/Applications";
+    casks = [
+      {
+        name = "1password";
+        args.appdir = "/Applications";
+      }
+      "arc"
+      "visual-studio-code"
+      "warp"
+    ];
+    onActivation.cleanup = "uninstall";
+  };
 
   # Enable alternative shell support in nix-darwin.
   # programs.fish.enable = true;
