@@ -8,8 +8,12 @@
     home.packages = with pkgs;
       [
         cascadia-code
-        direnv
         nixd
       ];
+
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 }
