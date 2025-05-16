@@ -36,6 +36,12 @@
       # Enable alternative shell support in nix-darwin.
       # programs.fish.enable = true;
 
+      security.pam.services.sudo_local = {
+        enable = true;
+        reattach = true;
+        touchIdAuth = true;
+      };
+
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
