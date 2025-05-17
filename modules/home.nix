@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
@@ -7,18 +8,17 @@
 
     home.stateVersion = "25.05";
 
-    home.packages = with pkgs;
-      [
-        cascadia-code
-        nixd
-      ];
+    home.packages = with pkgs; [
+      cascadia-code
+      nixd
+      nixfmt-rfc-style
+    ];
 
     programs._1password-shell-plugins = {
       enable = true;
-      plugins = with pkgs;
-        [
-          gh
-        ];
+      plugins = with pkgs; [
+        gh
+      ];
     };
 
     programs.direnv = {
@@ -42,7 +42,8 @@
 
     programs.ssh = {
       enable = true;
-      matchBlocks."*".identityAgent = ''"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'';
+      matchBlocks."*".identityAgent =
+        ''"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'';
     };
 
     programs.zsh = {

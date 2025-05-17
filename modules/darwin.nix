@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   nix.enable = false;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -15,7 +16,7 @@
     "/usr/share/zsh"
   ];
 
-  environment.systemPackages = [];
+  environment.systemPackages = [ ];
 
   homebrew = {
     enable = true;
