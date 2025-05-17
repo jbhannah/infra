@@ -5,4 +5,4 @@ switch: check
 
 .PHONY: $(ACTIONS)
 $(ACTIONS):
-	darwin-rebuild $@ --flake .#$(HOSTNAME)
+	sudo darwin-rebuild $@ --flake .#$(HOSTNAME)
