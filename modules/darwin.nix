@@ -5,6 +5,7 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   networking.computerName = "Miraidon";
+  system.primaryUser = "brooklyn";
 
   environment.extraInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
