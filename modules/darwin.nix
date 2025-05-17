@@ -6,8 +6,12 @@
     eval "$(/opt/homebrew/bin/brew shellenv)"
   '';
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
+  environment.pathsToLink = [
+    "/opt/homebrew/share/fish"
+    "/opt/homebrew/share/zsh"
+    "/usr/share/zsh"
+  ];
+
   environment.systemPackages = [];
 
   homebrew = {
