@@ -17,6 +17,15 @@
   homebrew = {
     enable = true;
 
+    brews = [
+      {
+        name = "colima";
+        restart_service = "changed";
+      }
+      "docker"
+      "docker-compose"
+    ];
+
     caskArgs.appdir = "~/Applications";
     casks = [
       {
