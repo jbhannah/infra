@@ -16,6 +16,7 @@
 
   homebrew = {
     enable = true;
+
     caskArgs.appdir = "~/Applications";
     casks = [
       {
@@ -23,9 +24,16 @@
         args.appdir = "/Applications";
       }
       "arc"
+      "chatgpt"
+      "discord"
+      "google-chrome"
+      "google-drive"
+      "notion"
+      "nordvpn"
       "visual-studio-code"
       "warp"
     ];
+
     onActivation.cleanup = "uninstall";
   };
 
