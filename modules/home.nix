@@ -58,5 +58,11 @@
         enable = true;
       };
     };
+
+    targets.darwin.defaults = {
+      "com.microsoft.VSCode" = {
+        "ApplePressAndHoldEnabled" = false;
+      };
+    };
   };
 }
