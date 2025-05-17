@@ -34,6 +34,7 @@
       }
       "docker"
       "docker-compose"
+      "mas"
       "pinentry-mac"
     ];
 
@@ -53,6 +54,16 @@
       "visual-studio-code"
       "warp"
     ];
+
+    masApps = {
+      "1Password for Safari" = 1569813296;
+      "Compressor" = 424390742;
+      "Final Cut Pro" = 424389933;
+      "Logic Pro" = 634148309;
+      "Motion" = 434290957;
+      "Pixelmator Pro" = 1289583905;
+      "Xcode" = 497799835;
+    };
 
     onActivation = {
       cleanup = "uninstall";
