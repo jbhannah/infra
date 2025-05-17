@@ -22,6 +22,10 @@
   homebrew = {
     enable = true;
 
+    taps = [
+      "domt4/autoupdate"
+    ];
+
     brews = [
       {
         name = "colima";
@@ -30,6 +34,7 @@
       }
       "docker"
       "docker-compose"
+      "pinentry-mac"
     ];
 
     caskArgs.appdir = "~/Applications";
@@ -49,7 +54,17 @@
       "warp"
     ];
 
-    onActivation.cleanup = "uninstall";
+    onActivation = {
+      cleanup = "uninstall";
+      upgrade = true;
+    };
+  };
+
+  system.activationScripts.postActivation = {
+    enable = true;
+    text = ''
+      sudo -u brooklyn -i /opt/homebrew/bin/brew autoupdate start --upgrade --immediate --cleanup --sudo || true
+    '';
   };
 
   # Enable alternative shell support in nix-darwin.
