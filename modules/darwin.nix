@@ -1,6 +1,9 @@
 { inputs, ... }: {
   nix.enable = false;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.hostPlatform = "aarch64-darwin";
+
+  networking.computerName = "Miraidon";
 
   environment.extraInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -61,9 +64,6 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
-
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
 
   users.users.brooklyn = {
     name = "brooklyn";
