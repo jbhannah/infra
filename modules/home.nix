@@ -2,6 +2,7 @@
 {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  home-manager.backupFileExtension = "backup";
 
   home-manager.users.brooklyn = {
     imports = [
@@ -51,14 +52,24 @@
       };
     };
 
+    programs.home-manager.enable = true;
+
+    programs.ripgrep.enable = true;
+    programs.ripgrep-all.enable = true;
+
     programs.ssh = {
       enable = true;
       matchBlocks."*".identityAgent =
         ''"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'';
     };
 
+    programs.starship.enable = true;
+
     programs.zsh = {
       enable = true;
+
+      autocd = true;
+      defaultKeymap = "viins";
 
       history = {
         append = true;
@@ -69,6 +80,12 @@
       syntaxHighlighting = {
         enable = true;
       };
+    };
+
+    programs.gpg.enable = true;
+    services.gpg-agent = {
+      enable = true;
+      pinentry.program = "/opt/homebrew/bin/pinentry-mac";
     };
 
     targets.darwin.defaults = {
