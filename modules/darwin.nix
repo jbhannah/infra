@@ -7,15 +7,9 @@
   networking.computerName = "Miraidon";
   system.primaryUser = "brooklyn";
 
-  environment.extraInit = ''
+  environment.interactiveShellInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
   '';
-
-  environment.pathsToLink = [
-    "/opt/homebrew/share/fish"
-    "/opt/homebrew/share/zsh"
-    "/usr/share/zsh"
-  ];
 
   environment.systemPackages = [ ];
 
