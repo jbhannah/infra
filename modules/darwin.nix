@@ -28,6 +28,7 @@
       }
       "docker"
       "docker-compose"
+      "docker-credential-helper"
       "mas"
       "pinentry-mac"
     ];
