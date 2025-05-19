@@ -4,7 +4,10 @@
   home-manager.useUserPackages = true;
 
   home-manager.users.brooklyn = {
-    imports = [ inputs._1password-shell-plugins.hmModules.default ];
+    imports = [
+      inputs._1password-shell-plugins.hmModules.default
+      ./aliases/default.nix
+    ];
 
     home.stateVersion = "25.05";
 
