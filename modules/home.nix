@@ -1,14 +1,19 @@
-{
-  inputs,
-  ...
-}:
+{ inputs, ... }:
 {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
 
   home-manager.users.brooklyn =
-    { pkgs, lib, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
+    let
+      _1password_ssh_agent_sock = ''"${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'';
+    in
     {
       imports = [
         inputs._1password-shell-plugins.hmModules.default
@@ -16,6 +21,16 @@
       ];
 
       home.stateVersion = "25.05";
+
+      home.file = {
+        ".colima/default/colima.yaml" = {
+          source = ../dotfiles/.colima/default/colima.yaml;
+        };
+
+        ".docker/config.json" = {
+          source = ../dotfiles/.docker/config.json;
+        };
+      };
 
       home.packages = with pkgs; [
         cascadia-code
@@ -73,8 +88,7 @@
 
       programs.ssh = {
         enable = true;
-        matchBlocks."*".identityAgent =
-          ''"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'';
+        matchBlocks."*".identityAgent = _1password_ssh_agent_sock;
       };
 
       programs.starship.enable = true;
