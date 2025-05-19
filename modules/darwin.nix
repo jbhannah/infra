@@ -13,7 +13,7 @@ in
   system.primaryUser = "brooklyn";
 
   environment.shellInit = shellInit;
-  programs.zsh.shellInit = shellInit;
+  programs.zsh.shellInit = shellInit; # nix-darwin ignores environment.shellInit for zsh
 
   environment.systemPackages = [ ];
 
