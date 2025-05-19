@@ -1,4 +1,9 @@
 { inputs, ... }:
+let
+  shellInit = ''
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  '';
+in
 {
   nix.enable = false;
   nixpkgs.config.allowUnfree = true;
@@ -7,9 +12,8 @@
   networking.computerName = "Miraidon";
   system.primaryUser = "brooklyn";
 
-  environment.interactiveShellInit = ''
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  '';
+  environment.shellInit = shellInit;
+  programs.zsh.shellInit = shellInit;
 
   environment.systemPackages = [ ];
 
