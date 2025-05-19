@@ -4,5 +4,8 @@
     l = "ls -alh";
   };
 
-  imports = [ ./git.nix ];
+  imports = [
+    ./brew.nix
+    ./git.nix
+  ];
 }
