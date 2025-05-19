@@ -1,97 +1,111 @@
-{ pkgs, inputs, ... }:
+{
+  inputs,
+  ...
+}:
 {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
 
-  home-manager.users.brooklyn = {
-    imports = [
-      inputs._1password-shell-plugins.hmModules.default
-      ./aliases/default.nix
-    ];
-
-    home.stateVersion = "25.05";
-
-    home.packages = with pkgs; [
-      cascadia-code
-      nixd
-      nixfmt-rfc-style
-    ];
-
-    programs._1password-shell-plugins = {
-      enable = true;
-      plugins = with pkgs; [
-        gh
+  home-manager.users.brooklyn =
+    { pkgs, lib, ... }:
+    {
+      imports = [
+        inputs._1password-shell-plugins.hmModules.default
+        ./aliases/default.nix
       ];
-    };
 
-    programs.bat.enable = true;
+      home.stateVersion = "25.05";
 
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+      home.packages = with pkgs; [
+        cascadia-code
+        nixd
+        nixfmt-rfc-style
+        rustup
+      ];
 
-    programs.eza = {
-      enable = true;
-      extraOptions = [ "--group-directories-first" ];
-      git = true;
-    };
+      home.activation.rustup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        run ${pkgs.rustup}/bin/rustup toolchain install $VERBOSE_ARG stable
+      '';
 
-    programs.git = {
-      enable = true;
+      home.sessionPath = [
+        "$HOME/.cargo/bin"
+      ];
 
-      userEmail = "jesse@jbhannah.net";
-      userName = "Jesse Brooklyn Hannah";
-
-      signing = {
-        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAnSncawa7Y3U7/ZUkqnXLrAgJ5mxNLLKOgM20+dsV+";
-        format = "ssh";
-        signByDefault = true;
-        signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-      };
-    };
-
-    programs.home-manager.enable = true;
-
-    programs.ripgrep.enable = true;
-    programs.ripgrep-all.enable = true;
-
-    programs.ssh = {
-      enable = true;
-      matchBlocks."*".identityAgent =
-        ''"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'';
-    };
-
-    programs.starship.enable = true;
-
-    programs.zsh = {
-      enable = true;
-
-      autocd = true;
-      defaultKeymap = "viins";
-
-      history = {
-        append = true;
-        extended = true;
-        ignoreAllDups = true;
-      };
-
-      syntaxHighlighting = {
+      programs._1password-shell-plugins = {
         enable = true;
+        plugins = with pkgs; [
+          gh
+        ];
+      };
+
+      programs.bat.enable = true;
+
+      programs.direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+      };
+
+      programs.eza = {
+        enable = true;
+        extraOptions = [ "--group-directories-first" ];
+        git = true;
+      };
+
+      programs.git = {
+        enable = true;
+
+        userEmail = "jesse@jbhannah.net";
+        userName = "Jesse Brooklyn Hannah";
+
+        signing = {
+          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAnSncawa7Y3U7/ZUkqnXLrAgJ5mxNLLKOgM20+dsV+";
+          format = "ssh";
+          signByDefault = true;
+          signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        };
+      };
+
+      programs.home-manager.enable = true;
+
+      programs.ripgrep.enable = true;
+      programs.ripgrep-all.enable = true;
+
+      programs.ssh = {
+        enable = true;
+        matchBlocks."*".identityAgent =
+          ''"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'';
+      };
+
+      programs.starship.enable = true;
+
+      programs.zsh = {
+        enable = true;
+
+        autocd = true;
+        defaultKeymap = "viins";
+
+        history = {
+          append = true;
+          extended = true;
+          ignoreAllDups = true;
+        };
+
+        syntaxHighlighting = {
+          enable = true;
+        };
+      };
+
+      programs.gpg.enable = true;
+      services.gpg-agent = {
+        enable = true;
+        pinentry.program = "/opt/homebrew/bin/pinentry-mac";
+      };
+
+      targets.darwin.defaults = {
+        "com.microsoft.VSCode" = {
+          "ApplePressAndHoldEnabled" = false;
+        };
       };
     };
-
-    programs.gpg.enable = true;
-    services.gpg-agent = {
-      enable = true;
-      pinentry.program = "/opt/homebrew/bin/pinentry-mac";
-    };
-
-    targets.darwin.defaults = {
-      "com.microsoft.VSCode" = {
-        "ApplePressAndHoldEnabled" = false;
-      };
-    };
-  };
 }
