@@ -24,9 +24,17 @@
       ];
     };
 
+    programs.bat.enable = true;
+
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
+    };
+
+    programs.eza = {
+      enable = true;
+      extraOptions = [ "--group-directories-first" ];
+      git = true;
     };
 
     programs.git = {
