@@ -24,6 +24,7 @@ in
 
   environment.shells = with pkgs; [
     fish
+    powershell
   ];
 
   homebrew = {
@@ -53,21 +54,38 @@ in
         args.appdir = "/Applications";
       }
       "alfred"
+      "alt-tab"
       "arc"
+      "calibre"
       "chatgpt"
       "chrome-remote-desktop-host"
+      "dash"
       "discord"
       "distroav"
+      "firefox"
       "google-chrome"
       "google-drive"
       "httpie"
       "imageoptim"
+      "krita"
       "libndi"
-      "notion"
+      "melonds"
+      "mgba"
+      "microsoft-edge"
       "nordvpn"
+      "notion"
+      "notion-calendar"
       "obs"
+      "opera"
+      "opera-air"
+      "opera-gx"
+      "plex"
+      "plexamp"
+      "pokemon-tcg-live"
+      "prismlauncher"
       "steam"
       "visual-studio-code"
+      "vivaldi"
       "warp"
     ];
 
