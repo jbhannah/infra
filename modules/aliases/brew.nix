@@ -22,7 +22,5 @@
     casks = "brew search --cask";
     casku = "brew upgrade --cask";
     caskx = "brew uninstall --cask";
-
-    buc = "brew upgrade; brew cleanup'";
   };
 }
