@@ -34,6 +34,7 @@
 
       home.packages = with pkgs; [
         cascadia-code
+        httpie
         nixd
         nixfmt-rfc-style
         rustup
@@ -113,7 +114,7 @@
       programs.gpg.enable = true;
       services.gpg-agent = {
         enable = true;
-        pinentry.program = "/opt/homebrew/bin/pinentry-mac";
+        pinentry.package = pkgs.pinentry_mac;
       };
 
       services.macos-remap-keys = {

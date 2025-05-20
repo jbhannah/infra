@@ -42,10 +42,8 @@ in
       "docker"
       "docker-compose"
       "docker-credential-helper"
-      "httpie"
       "imageoptim-cli"
       "mas"
-      "pinentry-mac"
     ];
 
     caskArgs.appdir = "~/Applications";
