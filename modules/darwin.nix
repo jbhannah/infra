@@ -1,4 +1,9 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   shellInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -16,6 +21,10 @@ in
   programs.zsh.shellInit = shellInit; # nix-darwin ignores environment.shellInit for zsh
 
   environment.systemPackages = [ ];
+
+  environment.shells = with pkgs; [
+    fish
+  ];
 
   homebrew = {
     enable = true;
@@ -90,7 +99,7 @@ in
   };
 
   # Enable alternative shell support in nix-darwin.
-  # programs.fish.enable = true;
+  programs.fish.enable = true;
 
   security.pam.services.sudo_local = {
     enable = true;
