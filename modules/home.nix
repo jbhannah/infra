@@ -12,7 +12,9 @@
       ...
     }:
     let
-      _1password_ssh_agent_sock = ''"${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'';
+      _1password_ssh_agent_sock = ''"${config.home.homeDirectory}/${
+        if pkgs.stdenv.isDarwin then "Library/Group Containers/2BUA8C4S2C.com.1password/t" else ".1password"
+      }/agent.sock"'';
     in
     {
       imports = [
@@ -80,7 +82,7 @@
           key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAnSncawa7Y3U7/ZUkqnXLrAgJ5mxNLLKOgM20+dsV+";
           format = "ssh";
           signByDefault = true;
-          signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          signer = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         };
       };
 
@@ -116,7 +118,7 @@
       programs.gpg.enable = true;
       services.gpg-agent = {
         enable = true;
-        pinentry.package = pkgs.pinentry_mac;
+        pinentry.package = lib.mkIf pkgs.stdenv.isDarwin pkgs.pinentry_mac;
       };
 
       services.macos-remap-keys = {
