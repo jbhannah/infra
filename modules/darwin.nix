@@ -17,9 +17,6 @@ in
   networking.computerName = "Miraidon";
   system.primaryUser = config.users.users.brooklyn.name;
 
-  environment.shellInit = shellInit;
-  programs.zsh.shellInit = shellInit; # nix-darwin ignores environment.shellInit for zsh
-
   environment.systemPackages = [ ];
 
   environment.shells = with pkgs; [
@@ -114,8 +111,13 @@ in
     '';
   };
 
-  # Enable alternative shell support in nix-darwin.
   programs.fish.enable = true;
+  programs.fish.shellInit = ''
+    /opt/homebrew/bin/brew shellenv | source
+  '';
+
+  programs.zsh.shellInit = shellInit;
+  programs.bash.interactiveShellInit = shellInit;
 
   security.pam.services.sudo_local = {
     enable = true;
