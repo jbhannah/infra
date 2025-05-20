@@ -116,6 +116,13 @@
         pinentry.program = "/opt/homebrew/bin/pinentry-mac";
       };
 
+      services.macos-remap-keys = {
+        enable = true;
+        keyboard = {
+          Capslock = "Control";
+        };
+      };
+
       targets.darwin.defaults = {
         "com.microsoft.VSCode" = {
           "ApplePressAndHoldEnabled" = false;
