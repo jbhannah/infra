@@ -39,6 +39,7 @@
         httpie
         nixd
         nixfmt-rfc-style
+        rsync
         rustup
       ];
 
