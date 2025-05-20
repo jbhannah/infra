@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 let
   shellInit = ''
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -10,7 +10,7 @@ in
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   networking.computerName = "Miraidon";
-  system.primaryUser = "brooklyn";
+  system.primaryUser = config.users.users.brooklyn.name;
 
   environment.shellInit = shellInit;
   programs.zsh.shellInit = shellInit; # nix-darwin ignores environment.shellInit for zsh
@@ -85,7 +85,7 @@ in
   system.activationScripts.postActivation = {
     enable = true;
     text = ''
-      sudo -u brooklyn -i /opt/homebrew/bin/brew autoupdate start --upgrade --immediate --cleanup --sudo || true
+      sudo -u ${config.system.primaryUser} -i /opt/homebrew/bin/brew autoupdate start --upgrade --immediate --cleanup --sudo || true
     '';
   };
 
