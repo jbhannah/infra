@@ -20,7 +20,10 @@ in
   networking.computerName = "Miraidon";
   system.primaryUser = username;
 
-  environment.systemPackages = [ ];
+  environment.systemPackages = with pkgs; [
+    fish
+    powershell
+  ];
 
   environment.shells = with pkgs; [
     fish
