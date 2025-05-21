@@ -93,6 +93,16 @@
 
       programs.home-manager.enable = true;
 
+      programs.neovim = {
+        enable = true;
+        coc.enable = true;
+        defaultEditor = true;
+        viAlias = true;
+        vimAlias = true;
+        vimdiffAlias = true;
+        withPython3 = true;
+      };
+
       programs.ripgrep.enable = true;
       programs.ripgrep-all.enable = true;
 
