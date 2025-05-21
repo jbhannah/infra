@@ -5,8 +5,11 @@
   ...
 }:
 let
+  brew = "/opt/homebrew/bin/brew";
+  username = "brooklyn";
+
   shellInit = ''
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    eval "$(${brew} shellenv)"
   '';
 in
 {
@@ -15,7 +18,7 @@ in
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   networking.computerName = "Miraidon";
-  system.primaryUser = config.users.users.brooklyn.name;
+  system.primaryUser = username;
 
   environment.systemPackages = [ ];
 
@@ -76,8 +79,6 @@ in
       "notion-mail"
       "obs"
       "opera"
-      "opera-air"
-      "opera-gx"
       "pearcleaner"
       "plex"
       "plexamp"
@@ -102,7 +103,7 @@ in
     };
 
     onActivation = {
-      cleanup = "uninstall";
+      cleanup = "zap";
       upgrade = true;
     };
   };
@@ -110,13 +111,13 @@ in
   system.activationScripts.postActivation = {
     enable = true;
     text = ''
-      sudo -u ${config.system.primaryUser} -i /opt/homebrew/bin/brew autoupdate start --upgrade --immediate --cleanup --sudo || true
+      sudo -u ${config.system.primaryUser} -i ${brew} autoupdate start --upgrade --immediate --cleanup --sudo || true
     '';
   };
 
   programs.fish.enable = true;
   programs.fish.shellInit = ''
-    /opt/homebrew/bin/brew shellenv | source
+    ${brew} shellenv | source
   '';
 
   programs.zsh.shellInit = shellInit;
@@ -135,8 +136,8 @@ in
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
 
-  users.users.brooklyn = {
-    name = "brooklyn";
-    home = "/Users/brooklyn";
+  users.users.${username} = {
+    name = username;
+    home = "/Users/${username}";
   };
 }
