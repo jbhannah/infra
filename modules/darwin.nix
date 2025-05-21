@@ -35,6 +35,7 @@ in
 
     taps = [
       "domt4/autoupdate"
+      "th-ch/youtube-music"
     ];
 
     brews = [
@@ -91,6 +92,8 @@ in
       "visual-studio-code"
       "vivaldi"
       "warp"
+
+      "th-ch/youtube-music/youtube-music"
     ];
 
     masApps = {
