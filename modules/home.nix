@@ -12,9 +12,9 @@
       ...
     }:
     let
-      _1password_ssh_agent_sock = ''"${config.home.homeDirectory}/${
+      _1password_ssh_agent_sock = "${config.home.homeDirectory}/${
         if pkgs.stdenv.isDarwin then "Library/Group Containers/2BUA8C4S2C.com.1password/t" else ".1password"
-      }/agent.sock"'';
+      }/agent.sock";
 
       signing_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAnSncawa7Y3U7/ZUkqnXLrAgJ5mxNLLKOgM20+dsV+";
     in
@@ -61,6 +61,10 @@
         "$HOME/.cargo/bin"
       ];
 
+      home.sessionVariables = {
+        SSH_AUTH_SOCK = _1password_ssh_agent_sock;
+      };
+
       programs._1password-shell-plugins = {
         enable = true;
         plugins = with pkgs; [
@@ -94,7 +98,7 @@
           key = signing_key;
           format = "ssh";
           signByDefault = true;
-          signer = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          signer = "ssh-keygen";
         };
 
         delta = {
@@ -133,7 +137,7 @@
 
       programs.ssh = {
         enable = true;
-        matchBlocks."*".identityAgent = _1password_ssh_agent_sock;
+        matchBlocks."*".identityAgent = ''"${_1password_ssh_agent_sock}"'';
       };
 
       programs.starship.enable = true;
