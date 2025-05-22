@@ -15,6 +15,8 @@
       _1password_ssh_agent_sock = ''"${config.home.homeDirectory}/${
         if pkgs.stdenv.isDarwin then "Library/Group Containers/2BUA8C4S2C.com.1password/t" else ".1password"
       }/agent.sock"'';
+
+      signing_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAnSncawa7Y3U7/ZUkqnXLrAgJ5mxNLLKOgM20+dsV+";
     in
     {
       imports = [
@@ -27,6 +29,10 @@
       home.file = {
         ".colima/default/colima.yaml" = {
           source = ../dotfiles/.colima/default/colima.yaml;
+        };
+
+        ".config/git/allowed_signers" = {
+          text = "jesse@jbhannah.net ${signing_key}";
         };
 
         ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
@@ -79,15 +85,34 @@
 
       programs.git = {
         enable = true;
+        lfs.enable = true;
 
         userEmail = "jesse@jbhannah.net";
         userName = "Jesse Brooklyn Hannah";
 
         signing = {
-          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAnSncawa7Y3U7/ZUkqnXLrAgJ5mxNLLKOgM20+dsV+";
+          key = signing_key;
           format = "ssh";
           signByDefault = true;
           signer = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        };
+
+        delta = {
+          enable = true;
+
+          options = {
+            line-numbers = true;
+            navigate = true;
+            side-by-side = true;
+          };
+        };
+
+        extraConfig = {
+          gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
+          init.defaultBranch = "trunk";
+          log.showSignature = true;
+          merge.conflictStyle = "zdiff3";
+          pull.rebase = true;
         };
       };
 
