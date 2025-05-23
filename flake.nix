@@ -21,8 +21,12 @@
     {
       nixosConfigurations.tinkaton = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+
         modules = [
           ./hosts/nixos/tinkaton
+          home-manager.nixosModules.home-manager
+          ./home
         ];
       };
 
@@ -35,6 +39,7 @@
           ./hosts/darwin/miraidon
           home-manager.darwinModules.home-manager
           ./home
+          ./home/darwin.nix
         ];
       };
     };

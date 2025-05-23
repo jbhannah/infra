@@ -1,10 +1,11 @@
 { ... }:
 {
   home.shellAliases = {
-    l = "ls -alh";
+    pbc = "pbcopy";
+    pbp = "pbpaste";
   };
 
   imports = [
-    ./git.nix
+    ./brew.nix
   ];
 }

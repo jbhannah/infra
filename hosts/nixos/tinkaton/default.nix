@@ -81,7 +81,7 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINSrqkXtluHRGoNSDuwpPj2pZXlNZFxPFqsmwxjP1X0P"
     ];
-    packages = [ ];
+    shell = pkgs.zsh;
   };
 
   users.groups.media.gid = 20100;
@@ -92,7 +92,8 @@
     isSystemUser = true;
   };
 
-  # programs.firefox.enable = true;
+  programs.nix-ld.enable = true;
+  programs.zsh.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
