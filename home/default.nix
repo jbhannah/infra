@@ -32,6 +32,7 @@
       };
 
       home.packages = with pkgs; [
+        gnumake
         httpie
         nixd
         nixfmt-rfc-style

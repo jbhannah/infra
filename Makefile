@@ -1,11 +1,14 @@
 HOSTNAME := $(shell hostname -s)
 ACTIONS := build
 SUDO_ACTIONS := check switch
+REBUILD_CMD = $(if $(shell test -f /etc/NIXOS && echo true),nixos-rebuild,darwin-rebuild) $@
+SUDO_REBUILD_CMD = $(if $(shell test -f /etc/NIXOS && echo true),$(REBUILD_CMD) --use-remote-sudo,sudo $(REBUILD_CMD))
+REBUILD_ARGS = --flake .\#$(HOSTNAME)
 
 .PHONY: $(ACTIONS)
 $(ACTIONS):
-	darwin-rebuild $@ --flake .#$(HOSTNAME)
+	$(REBUILD_CMD) $(REBUILD_ARGS)
 
 .PHONY: $(SUDO_ACTIONS)
 $(SUDO_ACTIONS):
-	sudo darwin-rebuild $@ --flake .#$(HOSTNAME)
+	$(SUDO_REBUILD_CMD) $(REBUILD_ARGS)
