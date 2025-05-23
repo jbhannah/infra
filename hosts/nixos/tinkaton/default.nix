@@ -104,7 +104,7 @@
   ];
 
   fileSystems."/mnt/genesect/media" = {
-    device = "192.168.1.100:/nfs/Media";
+    device = "genesect.home.local:/nfs/Media";
     fsType = "nfs";
     options = [
       "noatime"
