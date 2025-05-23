@@ -30,8 +30,6 @@
         ];
       };
 
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#Miraidon
       darwinConfigurations."Miraidon" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
 
