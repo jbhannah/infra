@@ -28,7 +28,7 @@
 
       home.file = {
         ".colima/default/colima.yaml" = {
-          source = ../dotfiles/.colima/default/colima.yaml;
+          source = ./dotfiles/.colima/default/colima.yaml;
         };
 
         ".config/git/allowed_signers" = {
@@ -36,11 +36,11 @@
         };
 
         ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
-          source = ../dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1;
+          source = ./dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1;
         };
 
         ".docker/config.json" = {
-          source = ../dotfiles/.docker/config.json;
+          source = ./dotfiles/.docker/config.json;
         };
       };
 

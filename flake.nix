@@ -12,17 +12,30 @@
   };
 
   outputs =
-    inputs@{ nix-darwin, home-manager, ... }:
+    inputs@{
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      ...
+    }:
     {
+      nixosConfigurations.tinkaton = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/nixos/tinkaton
+        ];
+      };
+
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#Miraidon
       darwinConfigurations."Miraidon" = nix-darwin.lib.darwinSystem {
-        modules = [
-          ./modules/darwin.nix
-          home-manager.darwinModules.home-manager
-          ./modules/home.nix
-        ];
         specialArgs = { inherit inputs; };
+
+        modules = [
+          ./hosts/darwin/miraidon
+          home-manager.darwinModules.home-manager
+          ./home
+        ];
       };
     };
 }
