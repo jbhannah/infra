@@ -38,6 +38,7 @@
 
   system.autoUpgrade = {
     enable = true;
+    flake = "github:jbhannah/infra";
     persistent = true;
     allowReboot = true;
     rebootWindow = {
