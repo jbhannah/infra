@@ -32,6 +32,7 @@
       };
 
       home.packages = with pkgs; [
+        gcc
         gnumake
         httpie
         nixd
