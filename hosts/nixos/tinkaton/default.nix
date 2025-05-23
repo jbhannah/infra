@@ -88,7 +88,7 @@
 
   users.users.media = {
     uid = config.users.groups.media.gid;
-    group = config.users.groups.media;
+    group = config.users.groups.media.name;
     isSystemUser = true;
   };
 
