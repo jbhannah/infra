@@ -43,10 +43,7 @@
         ];
       };
 
-      programs.ssh = {
-        enable = true;
-        matchBlocks."*".identityAgent = ''"${_1password_ssh_agent_sock}"'';
-      };
+      programs.ssh.matchBlocks."*".identityAgent = ''"${_1password_ssh_agent_sock}"'';
 
       services.macos-remap-keys = {
         enable = true;

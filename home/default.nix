@@ -118,6 +118,11 @@
       programs.ripgrep.enable = true;
       programs.ripgrep-all.enable = true;
 
+      programs.ssh = {
+        enable = true;
+        forwardAgent = true;
+      };
+
       programs.starship.enable = true;
 
       programs.zsh = {
