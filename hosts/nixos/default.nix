@@ -6,7 +6,7 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";
 
   environment.systemPackages = with pkgs; [
