@@ -23,6 +23,7 @@ in
   environment.systemPackages = with pkgs; [
     fish
     powershell
+    xz
   ];
 
   environment.shells = with pkgs; [
