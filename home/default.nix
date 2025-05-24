@@ -26,18 +26,29 @@
           text = "jesse@jbhannah.net ${signing_key}";
         };
 
+        ".config/nvim/init.lua" = {
+          source = ./dotfiles/.config/nvim/init.lua;
+        };
+
+        ".config/nvim/lua" = {
+          source = ./dotfiles/.config/nvim/lua;
+        };
+
         ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
           source = ./dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1;
         };
       };
 
       home.packages = with pkgs; [
+        fd
         gcc
         gnumake
         httpie
         nixd
         nixfmt-rfc-style
         rustup
+        shfmt
+        stylua
       ];
 
       home.activation.rustup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -98,21 +109,17 @@
 
       programs.gh = {
         enable = true;
-        gitCredentialHelper = {
-          enable = true;
-        };
+        gitCredentialHelper.enable = true;
       };
 
       programs.home-manager.enable = true;
 
       programs.neovim = {
         enable = true;
-        coc.enable = true;
         defaultEditor = true;
         viAlias = true;
         vimAlias = true;
         vimdiffAlias = true;
-        withPython3 = true;
       };
 
       programs.ripgrep.enable = true;
