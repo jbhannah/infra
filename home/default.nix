@@ -41,14 +41,13 @@
 
       home.packages = with pkgs; [
         fd
+        fzf
         gcc
         gnumake
         httpie
         nixd
         nixfmt-rfc-style
         rustup
-        shfmt
-        stylua
       ];
 
       home.activation.rustup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -120,6 +119,25 @@
         viAlias = true;
         vimAlias = true;
         vimdiffAlias = true;
+
+        extraPackages = with pkgs; [
+          ast-grep
+          imagemagick
+          lazygit
+          lua5_1
+          luarocks
+          lynx
+          markdownlint-cli2
+          nil
+          shfmt
+          stylua
+          wget
+        ];
+
+        extraLuaPackages =
+          ps: with ps; [
+            tiktoken_core
+          ];
       };
 
       programs.ripgrep.enable = true;
