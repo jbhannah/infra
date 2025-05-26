@@ -49,6 +49,7 @@ in
       "docker-compose"
       "docker-credential-helper"
       "imageoptim-cli"
+      "lima-additional-guestagents"
       "mas"
     ];
 

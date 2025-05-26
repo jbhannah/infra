@@ -17,16 +17,6 @@
         ./aliases/darwin.nix
       ];
 
-      home.file = {
-        ".colima/default/colima.yaml" = {
-          source = ./dotfiles/.colima/default/colima.yaml;
-        };
-
-        ".docker/config.json" = {
-          source = ./dotfiles/.docker/config.json;
-        };
-      };
-
       home.packages = with pkgs; [
         cascadia-code
         rsync
