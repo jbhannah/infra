@@ -52,7 +52,12 @@ require("lazy").setup({
 
 		-- import/override with your plugins
 		{ import = "plugins" },
-		{ "mfussenegger/nvim-dap" },
+		{
+			'vscode-neovim/vscode-multi-cursor.nvim',
+			event = 'VeryLazy',
+			cond = not not vim.g.vscode,
+			opts = {},
+		}
 	},
 	defaults = {
 		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
