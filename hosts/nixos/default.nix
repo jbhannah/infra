@@ -5,6 +5,8 @@
     "flakes"
   ];
 
+  nix.gc.automatic = true;
+
   nixpkgs.config.allowUnfree = true;
   networking.networkmanager.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";
