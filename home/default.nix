@@ -47,15 +47,6 @@
         httpie
         nixd
         nixfmt-rfc-style
-        rustup
-      ];
-
-      home.activation.rustup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        run ${pkgs.rustup}/bin/rustup toolchain install $VERBOSE_ARG stable
-      '';
-
-      home.sessionPath = [
-        "$HOME/.cargo/bin"
       ];
 
       programs.bat.enable = true;
