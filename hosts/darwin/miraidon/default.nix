@@ -90,6 +90,7 @@ in
       "plexamp"
       "pokemon-tcg-live"
       "prismlauncher"
+      "stats"
       "steam"
       "visual-studio-code"
       "vivaldi"
