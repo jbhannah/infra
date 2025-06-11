@@ -1,9 +1,20 @@
-{ config, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 {
   imports = [
     ../.
     ./hardware-configuration.nix
   ];
+
+  _module.args.pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    inherit (config.nixpkgs) config;
+  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -33,6 +44,7 @@
   services.plex = {
     enable = true;
     openFirewall = true;
+    package = pkgs-unstable.plex;
   };
 
   system.stateVersion = "25.05";
