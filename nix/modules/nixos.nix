@@ -9,12 +9,6 @@
   networking.networkmanager.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";
 
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
-  ];
-
   users.mutableUsers = false;
 
   users.users.brooklyn = {

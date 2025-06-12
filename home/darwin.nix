@@ -26,6 +26,12 @@
         SSH_AUTH_SOCK = _1password_ssh_agent_sock;
       };
 
+      home.file = {
+        ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
+          source = ./dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1;
+        };
+      };
+
       programs._1password-shell-plugins = {
         enable = true;
         plugins = with pkgs; [

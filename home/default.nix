@@ -33,10 +33,6 @@
         ".config/nvim/lua" = {
           source = ./dotfiles/.config/nvim/lua;
         };
-
-        ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
-          source = ./dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1;
-        };
       };
 
       home.packages = with pkgs; [
