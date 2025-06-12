@@ -25,17 +25,18 @@
         specialArgs = { inherit inputs; };
 
         modules = [
-          ./hosts/nixos/tinkaton
+          ./nix/hosts/tinkaton
           home-manager.nixosModules.home-manager
           ./home
         ];
       };
 
       darwinConfigurations."Miraidon" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
         specialArgs = { inherit inputs; };
 
         modules = [
-          ./hosts/darwin/miraidon
+          ./nix/hosts/miraidon
           home-manager.darwinModules.home-manager
           ./home
           ./home/darwin.nix

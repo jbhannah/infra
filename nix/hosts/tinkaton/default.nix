@@ -7,7 +7,8 @@
 }:
 {
   imports = [
-    ../.
+    ../../.
+    ../../modules/nixos.nix
     ./hardware-configuration.nix
   ];
 
@@ -20,7 +21,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "tinkaton";
-  time.timeZone = "America/Los_Angeles";
 
   users.users.brooklyn.hashedPassword = "$6$iYeK2yG8GRpj0nhM$8ixeAMJFbzcu8BPI5YbLz75xmj/v2LvLBoviE8wlba31Ri..ldUTW.GJmy7NhashYT6CSOcO25LJr4s.fPPTr/";
 

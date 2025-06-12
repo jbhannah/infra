@@ -1,24 +1,11 @@
+{ pkgs, ... }:
 {
-  config,
-  inputs,
-  pkgs,
-  ...
-}:
-let
-  brew = "/opt/homebrew/bin/brew";
-  username = "brooklyn";
+  imports = [
+    ../../.
+    ../../modules/darwin.nix
+  ];
 
-  shellInit = ''
-    eval "$(${brew} shellenv)"
-  '';
-in
-{
-  nix.enable = false;
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostPlatform = "aarch64-darwin";
-
-  networking.computerName = "Miraidon";
-  system.primaryUser = username;
+  networking.computerName = "miraidon";
 
   environment.systemPackages = with pkgs; [
     fish
@@ -32,33 +19,15 @@ in
   ];
 
   homebrew = {
-    enable = true;
-
     taps = [
-      "domt4/autoupdate"
       "th-ch/youtube-music"
     ];
 
     brews = [
-      {
-        name = "colima";
-        restart_service = "changed";
-        start_service = true;
-      }
-      "docker"
-      "docker-compose"
-      "docker-credential-helper"
       "imageoptim-cli"
-      "lima-additional-guestagents"
-      "mas"
     ];
 
-    caskArgs.appdir = "~/Applications";
     casks = [
-      {
-        name = "1password";
-        args.appdir = "/Applications";
-      }
       "alfred"
       "alt-tab"
       "arc"
@@ -110,27 +79,9 @@ in
       "Xcode" = 497799835;
       "Yoink" = 457622435;
     };
-
-    onActivation = {
-      cleanup = "zap";
-      upgrade = true;
-    };
-  };
-
-  system.activationScripts.postActivation = {
-    enable = true;
-    text = ''
-      sudo -u ${config.system.primaryUser} -i ${brew} autoupdate start --upgrade --immediate --cleanup --sudo || true
-    '';
   };
 
   programs.fish.enable = true;
-  programs.fish.shellInit = ''
-    ${brew} shellenv | source
-  '';
-
-  programs.zsh.shellInit = shellInit;
-  programs.bash.interactiveShellInit = shellInit;
 
   security.pam.services.sudo_local = {
     enable = true;
@@ -138,11 +89,5 @@ in
     touchIdAuth = true;
   };
 
-  system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
   system.stateVersion = 6;
-
-  users.users.${username} = {
-    name = username;
-    home = "/Users/${username}";
-  };
 }
