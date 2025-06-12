@@ -37,6 +37,8 @@ in
         name = "1password";
         args.appdir = "/Applications";
       }
+      "nordvpn"
+      "visual-studio-code"
     ];
 
     onActivation = {

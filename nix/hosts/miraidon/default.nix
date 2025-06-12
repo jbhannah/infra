@@ -10,7 +10,6 @@
   environment.systemPackages = with pkgs; [
     fish
     powershell
-    xz
   ];
 
   environment.shells = with pkgs; [
@@ -48,7 +47,6 @@
       "melonds"
       "mgba"
       "microsoft-edge"
-      "nordvpn"
       "notion"
       "notion-calendar"
       "notion-mail"
@@ -61,7 +59,6 @@
       "prismlauncher"
       "stats"
       "steam"
-      "visual-studio-code"
       "vivaldi"
       "warp"
 
