@@ -43,6 +43,7 @@
         httpie
         nixd
         nixfmt-rfc-style
+        tmux
       ];
 
       programs.bat.enable = true;
