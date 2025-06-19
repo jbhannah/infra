@@ -41,6 +41,7 @@
         gcc
         gnumake
         httpie
+        nil
         nixd
         nixfmt-rfc-style
         tmux

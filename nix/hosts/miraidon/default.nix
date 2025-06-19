@@ -51,6 +51,7 @@
       "notion-calendar"
       "notion-mail"
       "obs"
+      "ollama"
       "opera"
       "pearcleaner"
       "plex"
@@ -61,6 +62,7 @@
       "steam"
       "vivaldi"
       "warp"
+      "zed"
 
       "th-ch/youtube-music/youtube-music"
     ];

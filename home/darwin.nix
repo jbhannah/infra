@@ -23,6 +23,7 @@
       ];
 
       home.sessionVariables = {
+        HOMEBREW_NO_ENV_HINTS = 1;
         SSH_AUTH_SOCK = _1password_ssh_agent_sock;
       };
 
