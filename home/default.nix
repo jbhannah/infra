@@ -87,6 +87,7 @@
         };
 
         extraConfig = {
+          fetch.prune = true;
           gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
           init.defaultBranch = "trunk";
           log.showSignature = true;
