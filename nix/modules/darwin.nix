@@ -22,7 +22,6 @@ in
       {
         name = "colima";
         restart_service = "changed";
-        start_service = true;
       }
       "docker"
       "docker-compose"
