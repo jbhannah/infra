@@ -24,6 +24,7 @@ in
         restart_service = "changed";
       }
       "docker"
+      "docker-buildx"
       "docker-compose"
       "docker-credential-helper"
       "lima-additional-guestagents"
