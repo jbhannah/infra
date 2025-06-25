@@ -23,6 +23,10 @@
     ];
 
     brews = [
+      {
+        name = "ollama";
+        restart_service = "changed";
+      }
       "imageoptim-cli"
     ];
 
@@ -51,7 +55,6 @@
       "notion-calendar"
       "notion-mail"
       "obs"
-      "ollama"
       "opera"
       "pearcleaner"
       "plex"
