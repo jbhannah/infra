@@ -17,10 +17,17 @@
     inherit (config.nixpkgs) config;
   };
 
+  age.secrets."networking.wg-quick.interfaces.wg0.privateKey".file =
+    ./secrets/networking.wg-quick.interfaces.wg0.privateKey.age;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "tinkaton";
+
+  environment.systemPackages = [
+    inputs.agenix.packages.x86_64-linux.default
+  ];
 
   users.users.brooklyn.hashedPassword = "$6$iYeK2yG8GRpj0nhM$8ixeAMJFbzcu8BPI5YbLz75xmj/v2LvLBoviE8wlba31Ri..ldUTW.GJmy7NhashYT6CSOcO25LJr4s.fPPTr/";
 
@@ -48,4 +55,22 @@
   };
 
   system.stateVersion = "25.05";
+
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [
+        "172.16.16.2/24"
+      ];
+      peers = [
+        {
+          allowedIPs = [
+            "172.16.16.1/32"
+          ];
+          endpoint = "tinkatuff.jbhannah.net:51820";
+          publicKey = "rVLsWMyFL9GS9BqAA/yqk7vmFvgqTUJib7wRHXsnoD8=";
+        }
+      ];
+      privateKeyFile = config.age.secrets."networking.wg-quick.interfaces.wg0.privateKey".path;
+    };
+  };
 }
