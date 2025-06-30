@@ -68,6 +68,7 @@
           ];
           endpoint = "tinkatuff.jbhannah.net:51820";
           publicKey = "rVLsWMyFL9GS9BqAA/yqk7vmFvgqTUJib7wRHXsnoD8=";
+          persistentKeepalive = 25;
         }
       ];
       privateKeyFile = config.age.secrets."networking.wg-quick.interfaces.wg0.privateKey".path;
