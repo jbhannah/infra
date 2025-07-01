@@ -43,6 +43,7 @@
       "distroav"
       "firefox"
       "google-chrome"
+      "google-cloud-sdk"
       "google-drive"
       "httpie"
       "imageoptim"

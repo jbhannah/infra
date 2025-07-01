@@ -41,6 +41,9 @@
         gcc
         gnumake
         httpie
+        k9s
+        kubectl
+        kubernetes-helm
         nil
         nixd
         nixfmt-rfc-style
