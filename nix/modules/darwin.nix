@@ -38,6 +38,7 @@ in
         args.appdir = "/Applications";
       }
       "nordvpn"
+      "the-unarchiver"
       "visual-studio-code"
     ];
 
