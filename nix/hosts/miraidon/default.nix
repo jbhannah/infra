@@ -39,6 +39,7 @@
       "calibre"
       "chatgpt"
       "chrome-remote-desktop-host"
+      "claude"
       "dash"
       "discord"
       "distroav"
@@ -65,10 +66,13 @@
       "prismlauncher"
       "stats"
       "steam"
+      "syncthing-app"
       "tailscale-app"
+      "virtualbox"
       "vivaldi"
       "warp"
       "zed"
+      "zen"
 
       "th-ch/youtube-music/youtube-music"
     ];
