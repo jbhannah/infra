@@ -92,6 +92,7 @@
 
         extraConfig = {
           fetch.prune = true;
+          gpg.ssh.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
           gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
           init.defaultBranch = "trunk";
           log.showSignature = true;
