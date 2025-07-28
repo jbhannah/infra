@@ -27,6 +27,10 @@
         name = "ollama";
         restart_service = "changed";
       }
+      {
+        name = "syncthing";
+        restart_service = "changed";
+      }
       "imageoptim-cli"
     ];
 
@@ -66,7 +70,6 @@
       "prismlauncher"
       "stats"
       "steam"
-      "syncthing-app"
       "tailscale-app"
       "virtualbox"
       "vivaldi"
