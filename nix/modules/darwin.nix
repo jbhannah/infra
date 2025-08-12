@@ -40,6 +40,7 @@ in
       "nordvpn"
       "the-unarchiver"
       "visual-studio-code"
+      "xquartz"
     ];
 
     onActivation = {
