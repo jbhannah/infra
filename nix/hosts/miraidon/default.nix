@@ -5,6 +5,8 @@
     ../../modules/darwin.nix
   ];
 
+  system.primaryUser = "brooklyn";
+
   networking.computerName = "Miraidon";
 
   environment.systemPackages = with pkgs; [
@@ -19,7 +21,6 @@
 
   homebrew = {
     taps = [
-      "jbhannah/pkpw"
       "th-ch/youtube-music"
     ];
 
@@ -34,50 +35,43 @@
       }
       "imageoptim-cli"
       "uv"
-
-      "jbhannah/pkpw/pkpw"
     ];
 
     casks = [
       "alfred"
       "alt-tab"
-      "arc"
       "balenaetcher"
       "brave-browser"
       "calibre"
       "chatgpt"
       "chrome-remote-desktop-host"
       "claude"
-      "dash"
       "discord"
       "distroav"
       "firefox"
-      "google-chrome"
       "gcloud-cli"
       "google-drive"
-      "httpie-desktop"
       "imageoptim"
       "krita"
       "libndi"
       "melonds"
       "mgba-app"
       "microsoft-edge"
+      "nordvpn"
       "notion"
       "notion-calendar"
       "notion-mail"
       "obs"
       "opera"
-      "pearcleaner"
       "plex"
       "plexamp"
       "pokemon-tcg-live"
       "prismlauncher"
-      "stats"
       "steam"
       "tailscale-app"
       "virtualbox"
       "vivaldi"
-      "warp"
+      "xquartz"
       "zed"
       "zen"
 
@@ -90,19 +84,11 @@
       "Final Cut Pro" = 424389933;
       "Logic Pro" = 634148309;
       "Motion" = 434290957;
-      "Name Mangler 3" = 603637384;
       "Pixelmator Pro" = 1289583905;
-      "Yoink" = 457622435;
     };
   };
 
   programs.fish.enable = true;
-
-  security.pam.services.sudo_local = {
-    enable = true;
-    reattach = true;
-    touchIdAuth = true;
-  };
 
   system.stateVersion = 6;
 }

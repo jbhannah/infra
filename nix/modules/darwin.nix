@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   brew = "${config.homebrew.brewPrefix}/brew";
 
@@ -9,7 +9,7 @@ in
 {
   nix.enable = false;
 
-  system.primaryUser = "brooklyn";
+  system.primaryUser = lib.mkDefault "brooklyn";
 
   users.users.${config.system.primaryUser} = {
     home = "/Users/${config.system.primaryUser}";
@@ -29,6 +29,8 @@ in
       "docker-credential-helper"
       "lima-additional-guestagents"
       "mas"
+
+      "jbhannah/pkpw/pkpw"
     ];
 
     caskArgs.appdir = "~/Applications";
@@ -37,11 +39,21 @@ in
         name = "1password";
         args.appdir = "/Applications";
       }
-      "nordvpn"
+      "arc"
+      "dash"
+      "google-chrome"
+      "httpie-desktop"
+      "pearcleaner"
+      "stats"
       "the-unarchiver"
       "visual-studio-code"
-      "xquartz"
+      "warp"
     ];
+
+    masApps = {
+      "Name Mangler 3" = 603637384;
+      "Yoink" = 457622435;
+    };
 
     onActivation = {
       cleanup = "zap";
@@ -50,6 +62,7 @@ in
 
     taps = [
       "domt4/autoupdate"
+      "jbhannah/pkpw"
     ];
   };
 
@@ -60,6 +73,12 @@ in
   '';
 
   programs.zsh.shellInit = shellInit;
+
+  security.pam.services.sudo_local = {
+    enable = true;
+    reattach = true;
+    touchIdAuth = true;
+  };
 
   system.activationScripts.postActivation = {
     enable = true;

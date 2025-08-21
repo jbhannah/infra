@@ -1,6 +1,6 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 {
-  home-manager.users.brooklyn =
+  home-manager.users.${config.system.primaryUser} =
     {
       config,
       pkgs,

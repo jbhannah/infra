@@ -46,5 +46,17 @@
           ./home/darwin.nix
         ];
       };
+
+      darwinConfigurations."Okidogi" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs; };
+
+        modules = [
+          ./nix/hosts/okidogi
+          home-manager.darwinModules.home-manager
+          ./home
+          ./home/darwin.nix
+        ];
+      };
     };
 }

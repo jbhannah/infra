@@ -1,10 +1,10 @@
-{ ... }:
+{ config, ... }:
 {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
 
-  home-manager.users.brooklyn =
+  home-manager.users.${config.system.primaryUser} =
     {
       config,
       pkgs,
