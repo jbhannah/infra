@@ -30,8 +30,8 @@
           source = ./dotfiles/.config/nvim/init.lua;
         };
 
-        ".config/nvim/lua" = {
-          source = ./dotfiles/.config/nvim/lua;
+        ".config/nvim/lua/config" = {
+          source = ./dotfiles/.config/nvim/lua/config;
         };
       };
 
@@ -39,8 +39,6 @@
         azure-cli
         fd
         fzf
-        gcc
-        gnumake
         httpie
         k9s
         kubectl
