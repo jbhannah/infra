@@ -19,6 +19,7 @@
 
   homebrew = {
     taps = [
+      "jbhannah/pkpw"
       "th-ch/youtube-music"
     ];
 
@@ -32,6 +33,9 @@
         restart_service = "changed";
       }
       "imageoptim-cli"
+      "uv"
+
+      "jbhannah/pkpw/pkpw"
     ];
 
     casks = [
