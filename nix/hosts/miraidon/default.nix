@@ -5,8 +5,6 @@
     ../../modules/darwin.nix
   ];
 
-  system.primaryUser = "brooklyn";
-
   networking.computerName = "Miraidon";
 
   environment.systemPackages = with pkgs; [
