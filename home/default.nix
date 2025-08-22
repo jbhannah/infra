@@ -36,7 +36,7 @@
       };
 
       home.packages = with pkgs; [
-        azure-cli
+        devenv
         fd
         fzf
         httpie
