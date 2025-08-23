@@ -7,7 +7,7 @@
 
   system.primaryUser = "bhannah";
 
-  networking.computerName = "Okidogi";
+  networking.hostName = "Okidogi";
 
   homebrew = {
     casks = [

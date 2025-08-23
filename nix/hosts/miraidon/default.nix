@@ -5,7 +5,7 @@
     ../../modules/darwin.nix
   ];
 
-  networking.computerName = "Miraidon";
+  networking.hostName = "Miraidon";
 
   environment.systemPackages = with pkgs; [
     fish
