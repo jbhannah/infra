@@ -43,6 +43,10 @@ in
       "dash"
       "google-chrome"
       "httpie-desktop"
+      {
+        name = "ollama-app";
+        args.appdir = "/Applications";
+      }
       "pearcleaner"
       "stats"
       "the-unarchiver"

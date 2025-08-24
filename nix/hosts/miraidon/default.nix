@@ -24,15 +24,10 @@
 
     brews = [
       {
-        name = "ollama";
-        restart_service = "changed";
-      }
-      {
         name = "syncthing";
         restart_service = "changed";
       }
       "imageoptim-cli"
-      "uv"
     ];
 
     casks = [
@@ -48,6 +43,7 @@
       "distroav"
       "firefox"
       "gcloud-cli"
+      "ghostty"
       "google-drive"
       "imageoptim"
       "krita"
