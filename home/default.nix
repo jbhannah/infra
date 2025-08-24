@@ -42,8 +42,6 @@
       home.packages = with pkgs; [
         cascadia-code
         devenv
-        fd
-        fzf
         httpie
         k9s
         kubectl
@@ -67,7 +65,24 @@
         git = true;
       };
 
+      programs.fd = {
+        enable = true;
+        hidden = true;
+
+        ignores = [
+          ".direnv/"
+          ".git/"
+        ];
+      };
+
       programs.fish.enable = true;
+
+      programs.fzf = {
+        enable = true;
+
+        defaultCommand = "fd --type f --hidden";
+        changeDirWidgetCommand = "fd --type d --hidden";
+      };
 
       programs.git = {
         enable = true;
