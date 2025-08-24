@@ -80,6 +80,15 @@
         changeDirWidgetCommand = "fd --type d --hidden";
       };
 
+      programs.gh = {
+        enable = true;
+        gitCredentialHelper.enable = true;
+
+        extensions = with pkgs; [
+          gh-copilot
+        ];
+      };
+
       programs.git = {
         enable = true;
         lfs.enable = true;
@@ -113,11 +122,6 @@
           merge.conflictStyle = "zdiff3";
           pull.rebase = true;
         };
-      };
-
-      programs.gh = {
-        enable = true;
-        gitCredentialHelper.enable = true;
       };
 
       programs.home-manager.enable = true;
