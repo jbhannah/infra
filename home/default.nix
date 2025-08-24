@@ -22,10 +22,6 @@
       home.stateVersion = "25.05";
 
       home.file = {
-        ".config/ghostty/config" = {
-          source = ./dotfiles/.config/ghostty/config;
-        };
-
         ".config/git/allowed_signers" = {
           text = "jesse@jbhannah.net ${signing_key}";
         };
