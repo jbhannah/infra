@@ -18,6 +18,12 @@ in
   homebrew = {
     enable = true;
 
+    taps = [
+      "domt4/autoupdate"
+      "jbhannah/pkpw"
+      "sst/tap"
+    ];
+
     brews = [
       {
         name = "colima";
@@ -31,6 +37,7 @@ in
       "mas"
 
       "jbhannah/pkpw/pkpw"
+      "sst/tap/opencode"
     ];
 
     caskArgs.appdir = "~/Applications";
@@ -63,11 +70,6 @@ in
       cleanup = "zap";
       upgrade = true;
     };
-
-    taps = [
-      "domt4/autoupdate"
-      "jbhannah/pkpw"
-    ];
   };
 
   programs.bash.interactiveShellInit = shellInit;
