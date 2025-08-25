@@ -1,4 +1,9 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 {
   home-manager.users.${config.system.primaryUser} =
     {
@@ -40,6 +45,17 @@
         enable = true;
         plugins = with pkgs; [
           gh
+        ];
+      };
+
+      programs.git.extraConfig = {
+        credential."https://gist.github.com".helper = lib.mkForce [
+          ""
+          "!op plugin run -- gh auth git-credential"
+        ];
+        credential."https://github.com".helper = lib.mkForce [
+          ""
+          "!op plugin run -- gh auth git-credential"
         ];
       };
 
